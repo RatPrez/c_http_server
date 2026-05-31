@@ -149,6 +149,12 @@ void *handle_client(void *arg)
             printf("version: %s\n", req.version);
         }
 
+        if (strcmp(req.path, "/") == 0) {
+            redirect(client_fd, "/home");
+            close(client_fd);
+            return NULL;
+        }
+
         if (strstr(buf, "Sec-Fetch-Dest: document") == NULL || is_valid_web_page(req.path)) {
             send_file(client_fd, req);
         } else {
