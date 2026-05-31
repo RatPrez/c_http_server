@@ -1,0 +1,66 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #0f0f0f;
+    color: #e0e0e0;
+    font-family: system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    padding: 3rem 1rem 1.5rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+header p {
+    margin-top: 0.4rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+main {
+    width: 100%;
+    max-width: 900px;
+    padding: 2rem 1rem;
+}
+
+.media-grid {
+    columns: 2 320px;
+    gap: 1.5rem;
+}
+
+.card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    overflow: hidden;
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+}
+
+.card img,
+.card video {
+    width: 100%;
+    display: block;
+}
+
+.card-label {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    color: #555;
+    font-family: monospace;
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home</title>
+        <link rel="stylesheet" href="home.css" />
+
+        <script defer>
+            const mediaItems = [
+                { src: "/assets/cat.jpg",   isVideo: false },
+                { src: "/assets/cat2.jpeg", isVideo: false },
+                { src: "/assets/rat2.jpeg", isVideo: false },
+                { src: "/assets/rat.mp4",   isVideo: true  },
+                { src: "/assets/rats.mp4",  isVideo: true  },
+            ];
+
+            document.addEventListener("DOMContentLoaded", () => {
+                const grid = document.querySelector(".media-grid");
+                mediaItems.forEach(({ src, isVideo }) => {
+                    const card = document.createElement("div");
+                    card.className = "card";
+
+                    let media;
+                    if (isVideo) {
+                        media = document.createElement("video");
+                        media.autoplay = true;
+                        media.muted = true;
+                        media.loop = true;
+                        media.controls = true;
+                        const source = document.createElement("source");
+                        source.src = src;
+                        source.type = "video/mp4";
+                        media.appendChild(source);
+                    } else {
+                        media = document.createElement("img");
+                        media.src = src;
+                        media.alt = src.split("/").pop();
+                    }
+
+                    const label = document.createElement("div");
+                    label.className = "card-label";
+                    label.textContent = src.split("/").pop();
+
+                    card.appendChild(media);
+                    card.appendChild(label);
+                    grid.appendChild(card);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>HTTP Server</h1>
+            <p>Built from scratch in C</p>
+        </header>
+
+        <main>
+            <section class="media-grid"></section>
+        </main>
+    </body>
+</html>
