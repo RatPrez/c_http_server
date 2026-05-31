@@ -63,4 +63,67 @@ main {
     font-size: 0.8rem;
     color: #555;
     font-family: monospace;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-flavor[color="green"] {
+    color: #39ff14;
+    text-shadow: 0 0 6px #39ff14, 0 0 14px #39ff1466;
+    animation: flicker 6s infinite;
+}
+
+.card-flavor[color="blue"] {
+    color: #00b4ff;
+    text-shadow: 0 0 6px #00b4ff, 0 0 18px #00b4ff55;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.card-flavor[color="red"] {
+    color: #ff4444;
+    text-shadow: 0 0 6px #ff4444, 0 0 14px #ff444466;
+    animation: danger 1.8s ease-in-out infinite;
+}
+
+.card-flavor[color="yellow"] {
+    color: #ffd700;
+    text-shadow: 0 0 6px #ffd700, 0 0 14px #ffd70066;
+    animation: shimmer 2.5s ease-in-out infinite;
+}
+
+.card-flavor[color="rainbow"] {
+    background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00ff88, #00b4ff, #aa00ff, #ff0000);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbow 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { text-shadow: 0 0 6px #ffd700, 0 0 14px #ffd70066; color: #ffd700; }
+    50%      { text-shadow: 0 0 12px #ffe94d, 0 0 28px #ffd700aa, 0 0 45px #ffd70033; color: #ffe94d; }
+}
+
+@keyframes rainbow {
+    0%   { background-position: 0% 0%; }
+    100% { background-position: 300% 0%; }
+}
+
+@keyframes flicker {
+    0%, 92%, 100% { opacity: 1; }
+    93%           { opacity: 0.3; }
+    94%           { opacity: 1; }
+    96%           { opacity: 0.1; }
+    97%           { opacity: 1; }
+}
+
+@keyframes pulse {
+    0%, 100% { text-shadow: 0 0 6px #00b4ff, 0 0 18px #00b4ff55; }
+    50%      { text-shadow: 0 0 10px #00b4ff, 0 0 30px #00b4ffaa, 0 0 50px #00b4ff33; }
+}
+
+@keyframes danger {
+    0%, 100% { text-shadow: 0 0 6px #ff4444, 0 0 14px #ff444466; }
+    50%      { text-shadow: 0 0 10px #ff4444, 0 0 22px #ff4444aa, 0 0 40px #ff444433; opacity: 0.75; }
 }

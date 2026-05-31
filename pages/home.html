@@ -8,16 +8,41 @@
 
         <script defer>
             const mediaItems = [
-                { src: "/assets/cat.jpg",   isVideo: false },
-                { src: "/assets/cat2.jpeg", isVideo: false },
-                { src: "/assets/rat2.jpeg", isVideo: false },
-                { src: "/assets/rat.mp4",   isVideo: true  },
-                { src: "/assets/rats.mp4",  isVideo: true  },
+                {
+                    src: "/assets/cat.jpg",
+                    isVideo: false,
+                    flavor: "brain.exe not found",
+                    color: "yellow",
+                },
+                {
+                    src: "/assets/cat2.jpeg",
+                    isVideo: false,
+                    flavor: "does it have a thought?",
+                    color: "green",
+                },
+                {
+                    src: "/assets/rat2.jpeg",
+                    isVideo: false,
+                    flavor: "they're boys",
+                    color: "rainbow",
+                },
+                {
+                    src: "/assets/rat.mp4",
+                    isVideo: true,
+                    flavor: "i require water",
+                    color: "blue",
+                },
+                {
+                    src: "/assets/rats.mp4",
+                    isVideo: true,
+                    flavor: "threat level: extreme",
+                    color: "red",
+                },
             ];
 
             document.addEventListener("DOMContentLoaded", () => {
                 const grid = document.querySelector(".media-grid");
-                mediaItems.forEach(({ src, isVideo }) => {
+                mediaItems.forEach(({ src, isVideo, flavor, color }) => {
                     const card = document.createElement("div");
                     card.className = "card";
 
@@ -27,7 +52,7 @@
                         media.autoplay = true;
                         media.muted = true;
                         media.loop = true;
-                        media.controls = true;
+                        // media.controls = true;
                         const source = document.createElement("source");
                         source.src = src;
                         source.type = "video/mp4";
@@ -40,7 +65,17 @@
 
                     const label = document.createElement("div");
                     label.className = "card-label";
-                    label.textContent = src.split("/").pop();
+
+                    const filename = document.createElement("span");
+                    filename.textContent = src.split("/").pop();
+
+                    const flavorEl = document.createElement("span");
+                    flavorEl.className = "card-flavor";
+                    flavorEl.setAttribute("color", color);
+                    flavorEl.textContent = flavor;
+
+                    label.appendChild(filename);
+                    label.appendChild(flavorEl);
 
                     card.appendChild(media);
                     card.appendChild(label);
